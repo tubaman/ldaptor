@@ -1,6 +1,13 @@
 from zope.interface import implements, Interface, Attribute
 from twisted.internet import defer
-from twisted.python import plugin
+
+try:
+    # Twisted 12.0
+    from twisted import plugin
+except ImportError:
+    # Earlier version
+    from twisted.python import plugin
+
 from webut.skin import iskin
 
 from ldaptor.protocols.ldap import ldapsyntax, distinguishedname
